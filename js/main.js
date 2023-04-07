@@ -63,3 +63,43 @@ new Swiper('.promotion .swiper', {
         nextEl: '.promotion .swiper-next'
     }
 });
+
+const promotionEl = document.querySelector('.promotion');
+const promotionToggleBtn = document.querySelector('.toogle-promotion')
+let isHidePromotion = false;
+promotionToggleBtn.addEventListener('click', function(){
+    isHidePromotion = !isHidePromotion
+    if (isHidePromotion) {
+        promotionEl.classList.add('hide');
+    } else {
+        promotionEl.classList.remove('hide');
+    }
+});
+
+function random(min, max) {
+    return parseFloat((Math.random() * (max - min) + min).toFixed(2))
+  }
+
+function floatingObject(selector, delay, size) {
+    gsap.to(selector, random(1.5, 2.5), {
+        y: size,
+        repeat: -1,
+        yoyo: true,
+        ease: Power1.easeInOut,
+        delay: random(0, delay)
+    })
+}
+floatingObject('.floating1', 1, 15);
+floatingObject('.floating2', .5, 15);
+floatingObject('.floating3', 1.5, 20);
+
+const spyEls = document.querySelectorAll('section.scroll-spy');
+spyEls.forEach(function(spyEl){
+   new ScrollMagic
+   .Scene({
+        triggerElement: spyEl,
+        triggerHook: .8
+   })
+   .setClassToggle(spyEl, 'show')
+   .addTo(new ScrollMagic.Controller());
+})
