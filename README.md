@@ -1,4 +1,4 @@
-# STARBUCKS
+# STARBUCKS CLONE CODING
 
 스타벅스 클론코딩입니다.  
 
